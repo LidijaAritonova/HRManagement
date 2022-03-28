@@ -1,0 +1,45 @@
+﻿@model HRManagement.Models.CreateLeaveAllocationVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>Leave Types</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LeaveTypes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    <a asp-action="SetLeave" class="btn btn-outline-success" asp-route-id="@item.Id">
+                        <i class="fas fa-edit"></i> Allocate To Employees
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            $('#tblData').DataTable();
+        });
+
+
+    </script>
+}
